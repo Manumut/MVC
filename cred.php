@@ -1,7 +1,7 @@
 <?php
 
 define('USUARIO_CON', 'con');
-define('PASS_CON', 'ola');
+define('PSW_CON', 'ola');
 
 
 ?>
