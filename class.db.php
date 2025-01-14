@@ -1,5 +1,5 @@
 <?php
-require_once('cred.php');
+
     class db{ // Clase db
         private $conn; // Variable de conexion
         public function __construct(){ // Constructor
