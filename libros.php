@@ -33,11 +33,13 @@
 
                 // Añadir el libro al array de libros
                 $libros[] = $libro;
+                require_once('comienzo.php');
             }
 
             return $libros;
         }
     }
+
 ?>
 
 

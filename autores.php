@@ -1,13 +1,34 @@
 <?php
+    require_once('class.db.php');
+    class autor{
+        public $con;
+        public $nombre;
+        public $dni;
 
-require_once('cabecera.html');
-require_once('class.db.php');
+        public function __construct(String $n = "", String $d = ""){
+            $this->con = new db();
+            $this->nombre = $n;
+            $this->dni = $d;
+        }
 
-class autores{
-    public $nombre;
+        public function obtenerAutores(){
+            $consulta = "SELECT * FROM autores";
+            $sentencia = $this->con->getConn()->prepare($consulta);
+            $sentencia->execute();
+            $sentencia->bind_result($this->dni, $this->nombre);
 
-    public function __construct($nombre){
-        $this->nombre = $nombre;
+            $autores = array();
+
+            while($sentencia->fetch()){
+                $autor = array(
+                    "nombre" => $this->nombre,
+                    "dni" => $this->dni
+                );
+
+                $autores[] = $autor;
+            }
+
+            return $autores;
+        }
     }
-}
 ?>

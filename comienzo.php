@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="modelo.php?action=ajuste" method="post" enctype="multipart/form-data">
+    <form action="index.php?action=ajuste" method="post">
         <section>
             <table>
                 <tr>
@@ -20,7 +20,7 @@
                     if ($libros) {
                         foreach ($libros as $libro) {
                             echo "<tr>";
-                            echo "<td><input type=\"checkbox\"></td>";
+                            echo "<td><input type=\"checkbox\" name=\"libros[]\" value=\"" . $libro['id'] . "\"></td>";
                             echo "<td>" . $libro['titulo'] . "</td>";
                             echo "<td>" . $libro['autor'] . "</td>";
                             echo "<td>" . ($libro['disponible'] ? 'Sí' : 'No') . "</td>";
