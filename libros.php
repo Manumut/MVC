@@ -1,36 +1,43 @@
 <?php
+    require_once('class.db.php');
+    class libro{
+        private $con;
+        private $id;
+        private $titulo;
+        private $autor;
+        private $dispon;
 
-require_once('cabecera.html');
-require_once('class.db.php');
+        public function __construct(int $i = 0, String $tit = "", String $aut = "", bool $dis = true){
+            $this->con = new db();
+            $this->id = $i;
+            $this->titulo = $tit;
+            $this->autor = $aut;
+            $this->dispon = $dis;
+        }
+        
+        public function obtenerLibros(){
+            $sentencia = "SELECT * FROM libros";
+            $consulta = $this->conn->getConn()->prepare($sentencia);
+            // $consulta->bind_param("ss", $nom, $psw); // Creamos los parametros
+            $consulta->execute();
+            $consulta->bind_result($this->titulo, $this->autor, $this->dispon);
 
-class libros{
-    public $titulo;
-    public $autor;
-    public $estado;
+            $libros = array(); // Array para almacenar los libros
+            while ($consulta->fetch()) {
+                // Crear un array asociativo para cada libro
+                $libro = array(
+                    "titulo" => $this->titulo,
+                    "autor" => $this->autor,
+                    "dispon" => $this->dispon
+                );
 
-    public function __construct($titulo, $autor, $estado){
-        $this->autor = $autor;
-        $this->titulo = $titulo;
-        $this->estado = $estado;
+                // Añadir el libro al array de libros
+                $libros[] = $libro;
+            }
+
+            return $libros;
+        }
     }
-
-    public function mostrarLibro(){
-        $sentencia = "SELECT * FROM libros"; // Creamos la sentencia
-        $consulta = $this->conn->prepare($sentencia); // Creamos la consulta
-        $consulta->bind_param("ss", $nom, $psw); // Creamos los parametros
-        $consulta->bind_result($count); // Creamos el resultado
-
-        $consulta->execute(); // Ejecutamos la consulta
-        $consulta->fetch(); // Obtenemos el resultado
-
-        $existe = false; // Variable para comprobar si el usuario existe
-
-        if($count == 1) $existe = true; // Si el usuario existe
-
-        $consulta->close(); // Cerramos la consulta
-        return $existe; // Devolvemos el valor de la variable
-    }
-
-}
-
 ?>
+
+
