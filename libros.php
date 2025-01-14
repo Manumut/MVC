@@ -17,7 +17,7 @@
         
         public function obtenerLibros(){
             $sentencia = "SELECT * FROM libros";
-            $consulta = $this->conn->getConn()->prepare($sentencia);
+            $consulta = $this->con->getCon()->prepare($sentencia);
             // $consulta->bind_param("ss", $nom, $psw); // Creamos los parametros
             $consulta->execute();
             $consulta->bind_result($this->titulo, $this->autor, $this->dispon);
