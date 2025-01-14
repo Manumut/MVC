@@ -33,6 +33,7 @@
         <input type="submit" value="Borrar" name="borrar">
         <input type="submit" value="Modificar" name="modificar">
         <input type="submit" value="Añadir" name="añadir">
+        
     </form>
 </body>
 </html>
