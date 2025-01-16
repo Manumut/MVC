@@ -56,7 +56,7 @@
         $lib = new libro();
         $libros = $lib->obtenerLibros();  // Aquí obtenemos el array de libros
         
-        require_once('inicio.php');
+        require_once('comienzo.php');
     }
     
 ?>

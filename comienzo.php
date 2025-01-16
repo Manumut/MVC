@@ -23,7 +23,7 @@
                             echo "<td><input type=\"checkbox\" name=\"libros[]\" value=\"" . $libro['id'] . "\"></td>";
                             echo "<td>" . $libro['titulo'] . "</td>";
                             echo "<td>" . $libro['autor'] . "</td>";
-                            echo "<td>" . ($libro['disponible'] ? 'Sí' : 'No') . "</td>";
+                            echo "<td>" . ($libro['dispon'] ? 'Sí' : 'No') . "</td>";
                             echo "</tr>";
                         }
                     }
