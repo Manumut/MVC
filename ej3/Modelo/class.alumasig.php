@@ -40,6 +40,13 @@ class aluasig{
         $sentencia->close(); // Cerrar la sentencia para liberar recursos
         return $calif;
     }
+
+    public function guardarCalificacion($idAlumno, $idAsignatura, $nota) { // Funcion para guardar la calificacion antes guardarCalificacion
+        $consulta = "INSERT INTO alu_asig (id_alum, id_asig, nota) VALUES ($idAlumno, $idAsignatura, $nota)";
+        $sentencia = $this->conn->getConn()->prepare($consulta);
+        $sentencia->execute();
+        $sentencia->close();
+    }
 }
 
 ?>

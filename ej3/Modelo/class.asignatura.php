@@ -34,6 +34,24 @@ class asignatura{
         }
         return $asignaturas;
     }
+
+    public function obtenerAsignaturas() { // Funcion para obtener las asignaturas  antes obtenerAsignaturas
+        $consulta = "SELECT * FROM asignaturas";
+        $sentencia = $this->conn->getConn()->prepare($consulta);
+        $sentencia->bind_result($this->id, $this->nombre, $this->modulo, $this->curso);
+        $sentencia->execute();
+        
+        $asignaturas = array();
+        while ($sentencia->fetch()) {
+            $asignaturas[] = array( // Crear un array asociativo para cada asignatura
+                "id" => $this->id,
+                "nombre" => $this->nombre,
+                "modulo" => $this->modulo,
+                "curso" => $this->curso
+            );
+        }
+        return $asignaturas;
+    }
 }
 
 ?>

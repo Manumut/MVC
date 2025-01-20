@@ -31,4 +31,21 @@ class alumno {
         return $alumnos;
     }
 
+    public function obtenerAlumnos() { // Funcion para obtener los alumnos  antes obtenerAlumnos
+        $consulta = "SELECT * FROM alumno";
+        $sentencia = $this->conn->getConn()->prepare($consulta);
+        $sentencia->bind_result($this->id, $this->dni, $this->nombre); // Asociar las columnas a las propiedades
+        $sentencia->execute();
+        
+        $alumnos = array();
+        while ($sentencia->fetch()) {
+            $alumnos[] = array( // Crear un array asociativo para cada alumno
+                "id" => $this->id,
+                "dni" => $this->dni,
+                "nombre" => $this->nombre
+            );
+        }
+        return $alumnos;
+    }
+
 }
