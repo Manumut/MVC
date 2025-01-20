@@ -18,6 +18,7 @@ class aluasig{
         $mod = "";
         $cur = "";
         $nota = 0; // Variable local para manejar el valor de nota
+        
         // Convertir $idAlumno a double
         $idAlumno = doubleval($idAlumno);
         $consulta = "SELECT nota, nombre, modulo, curso FROM alu_asig, asignaturas WHERE id_alum = $idAlumno AND id_asig = id";
@@ -28,7 +29,7 @@ class aluasig{
         $alumnoCalificaciones = array();
         while ($sentencia->fetch()) {
             if ($nota === null) { // Verificar si nota es null
-                $nota = 2;
+                $nota = 0;
             }
             $alumnoCalificaciones[] = array(
                 "nota" => $nota,

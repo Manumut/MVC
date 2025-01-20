@@ -14,15 +14,15 @@ class alumno {
         $this->nombre = $nombre;
     }
 
-    public function obtenerAlumnos() {
+    public function obtenerAlumnos() { // Funcion para obtener los alumnos
         $consulta = "SELECT * FROM alumnos";
         $sentencia = $this->conn->getConn()->prepare($consulta);
         $sentencia->execute();
-        $sentencia->bind_result($this->id, $this->dni, $this->nombre);
+        $sentencia->bind_result($this->id, $this->dni, $this->nombre); // Asociar las columnas a las propiedades
         
         $alumnos = array();
         while ($sentencia->fetch()) {
-            $alumnos[] = array(
+            $alumnos[] = array( // Crear un array asociativo para cada alumno
                 "id" => $this->id,
                 "dni" => $this->dni,
                 "nombre" => $this->nombre

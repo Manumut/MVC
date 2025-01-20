@@ -25,7 +25,7 @@ class asignatura{
         
         $asignaturas = array();
         while ($sentencia->fetch()) {
-            $asignaturas[] = array(
+            $asignaturas[] = array( // Crear un array asociativo para cada asignatura
                 "id" => $this->id,
                 "nombre" => $this->nombre,
                 "modulo" => $this->modulo,
