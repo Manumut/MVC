@@ -2,19 +2,19 @@
 
 require_once('../class.db.php');
 class alumno {
-    public $conn;
+    public $con;
     private $id;
     private $dni;
     private $nombre;
 
     public function __construct(int $id=0, String $dni="", String $nombre="") {
-        $this->conn = new db();
+        $this->con = new db();
         $this->id = $id;
         $this->dni = $dni;
         $this->nombre = $nombre;
     }
 
-    public function obtenerAlumnos() { // Funcion para obtener los alumnos
+    public function alumnos() { // Funcion para obtener los alumnos  antes obtenerAlumnos
         $consulta = "SELECT * FROM alumnos";
         $sentencia = $this->conn->getConn()->prepare($consulta);
         $sentencia->execute();

@@ -3,21 +3,21 @@
 require_once('../class.db.php');
 
 class asignatura{
-    private $conn;
+    private $con;
     private $id;
     private $nombre;
     private $modulo;
     private $curso;
 
     public function __construct(int $id=0, String $nombre="", String $modulo="", String $curso="") {
-        $this->conn = new db();
+        $this->con = new db();
         $this->id = $id;
         $this->nombre = $nombre;
         $this->modulo = $modulo;
         $this->curso = $curso;
     }
 
-    public function obtenerAsignaturas() { // Funcion para obtener las asignaturas
+    public function asignaturas() { // Funcion para obtener las asignaturas  antes obtenerAsignaturas
         $consulta = "SELECT * FROM asignaturas";
         $sentencia = $this->conn->getConn()->prepare($consulta);
         $sentencia->execute();
