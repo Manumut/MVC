@@ -1,6 +1,6 @@
 <?php
 
-require_once('class.db.php');
+require_once('../class.db.php');
 class alumno {
     public $conn;
     private $id;
